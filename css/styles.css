@@ -1,0 +1,75 @@
+body{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FCF3CF;
+    
+}
+#calendario {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    
+    
+}
+
+
+
+#dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-top: 18px;
+}
+
+.dia {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.dia-fuera {
+    color: #aaa;
+}
+
+.mesyaño button{
+    background-color: #FCF3CF;
+    border-style: none;
+}
+
+#encabezado {
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+.dia-de-la-semana {
+    font-weight: bold;
+}
+
+.dia-seleccionado {
+    background-color: red;
+    color: white;
+}
+
+#selectorFecha{
+    margin-top: 18px;
+}
+
+#mensaje{
+    margin-top: 18px;
+}
+
+#buttonselectorFecha{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+#confirmarFecha{
+    border-radius: 13px;
+    background-color: #FCF3CF;
+    padding: 10px;
+}
