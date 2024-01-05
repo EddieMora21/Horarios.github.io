@@ -46,6 +46,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 fecha.getFullYear() === fechaSeleccionada.getFullYear()) {
                 dia.classList.add('dia-seleccionado');
             }
+    
+            // Agregar manejador de clic para cada día
+            (function(fechaCapturada) {
+                dia.addEventListener('click', function() {
+                    fechaSeleccionada = new Date(fechaCapturada);
+                    actualizarMensaje(fechaSeleccionada);
+                    dibujarCalendario(); // Redibujar para actualizar la selección visual
+                });
+            })(new Date(fecha));
+    
             dias.appendChild(dia);
             fecha.setDate(fecha.getDate() + 1);
         }
@@ -59,24 +69,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const actualizarMensaje = (fecha) => {
         let mensaje = "";
-        if (fecha.getDate() >= 2) {
-            switch ((Math.floor((fecha.getDate() - 2) / 2)) % 4) {
-                case 0:
-                    mensaje = "Entras en la tarde";
-                    break;
-                case 1:
-                    mensaje = "Entras en la noche";
-                    break;
-                case 2:
-                    mensaje = "Estás libre";
-                    break;
-                case 3:
-                    mensaje = "Entras por la mañana";
-                    break;
-            }
+        let diaDelAnio = obtenerDiaDelAnio(fecha);
+        let patron = Math.floor(diaDelAnio / 2) % 4;
+    
+        switch (patron) {
+            case 0:
+                mensaje = "Entras en la mañana";
+                break;
+            case 1:
+                mensaje = "Entras en la tarde";
+                break;
+            case 2:
+                mensaje = "Entras en la noche";
+                break;
+            case 3:
+                mensaje = "Estás libre";
+                break;
         }
+    
         textoMensaje.value = mensaje;
     };
+    
+    const obtenerDiaDelAnio = (fecha) => {
+        const comienzoAnio = new Date(fecha.getFullYear(), 0, 1);
+        const diferencia = fecha - comienzoAnio;
+        const unDia = 1000 * 60 * 60 * 24;
+        return Math.floor(diferencia / unDia) + 1;
+    };
+    
+    
 
     mesAnterior.addEventListener('click', () => {
         fechaActual.setMonth(fechaActual.getMonth() - 1);
