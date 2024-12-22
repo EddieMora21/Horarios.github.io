@@ -1,36 +1,58 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Calendario</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <div id="calendario">
-        <div class="mesyaño">
-            <button id="mesAnterior">&lt;</button>
-            <span id="encabezado"></span>
-            <button id="mesSiguiente">&gt;</button>
-        </div>
-        <div id="dias"></div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Horarios</title>
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .horarios-container {
+        margin: 50px auto;
+        max-width: 800px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .horarios-title {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="horarios-container">
+      <h1 class="horarios-title">Horarios</h1>
+      <div id="horarios-list" class="list-group">
+        <!-- Los horarios serán cargados dinámicamente aquí -->
+      </div>
     </div>
-    <div id="selectorFecha">
-        <input type="number" id="inputAnio" placeholder="Año">
-        <input type="number" id="inputMes" placeholder="Mes (1-12)">
-        <input type="number" id="inputDia" placeholder="Día">
-        <div id="buttonselectorFecha">
-            <button id="confirmarFecha">Confirmar</button>
-        </div>
-    </div>
-    <div id="mensaje">
-        <textarea id="textoMensaje" rows="5" cols="40"></textarea>
-    </div>
-    
 
-    <script src="js/script.js"></script>
-</body>
+    <script>
+      const horarios = [
+        { name: "William", link: "William.html" },
+        { name: "Ronal", link: "Ronal.html" },
+        { name: "Jose", link: "Jose.html" },
+        { name: "Victor", link: "Victor.html" },
+      ];
+
+      const horariosList = document.getElementById("horarios-list");
+
+      horarios.forEach((horario) => {
+        const listItem = document.createElement("a");
+        listItem.href = horario.link;
+        listItem.className = "list-group-item list-group-item-action";
+        listItem.textContent = horario.name;
+        horariosList.appendChild(listItem);
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
-
-
-
