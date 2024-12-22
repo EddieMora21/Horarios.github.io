@@ -6,6 +6,16 @@ body{
     align-items: center;
     background-color: #FCF3CF;
     
+    
+}
+a{
+    
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover{
+    color: blue;
 }
 #calendario {
     display: flex;
